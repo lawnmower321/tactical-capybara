@@ -1,0 +1,24 @@
+alter table public.profiles enable row level security;
+alter table public.missions enable row level security;
+alter table public.stat_events enable row level security;
+alter table public.inventory enable row level security;
+alter table public.user_cosmetics enable row level security;
+alter table public.dialog_history enable row level security;
+alter table public.cosmetics enable row level security;
+
+create policy "users can view own profile" on public.profiles for select using (auth.uid() = id);
+create policy "users can update own profile" on public.profiles for update using (auth.uid() = id);
+create policy "users can view own missions" on public.missions for select using (auth.uid() = user_id);
+create policy "users can insert own missions" on public.missions for insert with check (auth.uid() = user_id);
+create policy "users can update own missions" on public.missions for update using (auth.uid() = user_id);
+create policy "users can view own stat events" on public.stat_events for select using (auth.uid() = user_id);
+create policy "users can insert own stat events" on public.stat_events for insert with check (auth.uid() = user_id);
+create policy "users can view own inventory" on public.inventory for select using (auth.uid() = user_id);
+create policy "users can insert own inventory" on public.inventory for insert with check (auth.uid() = user_id);
+create policy "users can update own inventory" on public.inventory for update using (auth.uid() = user_id);
+create policy "all authenticated can view cosmetics" on public.cosmetics for select to authenticated using (true);
+create policy "users can view own user_cosmetics" on public.user_cosmetics for select using (auth.uid() = user_id);
+create policy "users can insert own user_cosmetics" on public.user_cosmetics for insert with check (auth.uid() = user_id);
+create policy "users can update own user_cosmetics" on public.user_cosmetics for update using (auth.uid() = user_id);
+create policy "users can view own dialog" on public.dialog_history for select using (auth.uid() = user_id);
+create policy "users can insert own dialog" on public.dialog_history for insert with check (auth.uid() = user_id);
