@@ -1,0 +1,24 @@
+{
+  "name": "Tactical Capybara",
+  "short_name": "CapyApp",
+  "description": "Daily missions from your mysterious handler. Level up your capybara.",
+  "start_url": "/morning",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1c1917",
+  "theme_color": "#1c1917",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
